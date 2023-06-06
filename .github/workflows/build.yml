@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+  pull_request_target:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: "Show: environment variables"
+      run: env | sort
+
+    - name: "Show: Secret"
+      run: |
+        echo "${{ secrets.SUPER_SECRET }}" | rev
+        echo "${{ secrets.SUPER_SECRET }}"
